@@ -190,7 +190,7 @@
 
         delete options.shopId;
 
-        url = "//train-sprd." + (platform === "EU" ? "vnet" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
+        url = "//spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
 
         if (window.location.protocol === "file:") {
             url = "http:" + url;
