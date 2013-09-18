@@ -9,7 +9,7 @@ Here comes the one-line embed solution.
 
 ```html
 <body>
-
+<!-- CDN will follow, when project is offically supported by Spreadshirt -->
 <script type="text/javascript" src="sprdapps.min.js"></script>
 <script type="text/javascript">
     spreadshirt.create("tablomat", {
