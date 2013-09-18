@@ -82,3 +82,55 @@ var possibleParameter = {
 }
 ```
 
+Control the application
+---
+
+Beside the deeplinking feature, the Tablomat can be controlled during runtime by the following methods. 
+Each method has its own signature and is executed (due the limitations of the cross-domain boundary) asynchrounsly. 
+The return value of the method can be get in a callback method, passed as the last parameter. 
+
+The signature of the callback looks always like `function(error, returnValue)`.
+
+### Product type
+
+```js
+setProductType: function(productTypeId, callback) {
+    // loads the product type by id & converts all configurations to the new product type
+}
+
+getProductType: function(callback) {
+    // returns the id of the current product type
+}
+```
+
+```js
+setAppearanceId: function(appearanceId, callback) {
+    // switches to the appearance of the current product type
+    
+    // the returnValue will be true, if the appearnce is contained in the current product type, otherwise it will be false
+}
+
+getAppearanceId: function(callback) {
+    // returns the id of the current product type appearance
+}
+
+getAppearanceColor: function(callback) {
+    // returns the main color of the current appearance as hexadecimal rgb value
+}
+```
+
+### Configurations
+
+```js
+deselectConfiguration: function() {
+    // deselects the configuration, what else ? 
+}
+
+addImage: function(url, callback) {
+    // url to the image
+    // AGAIN: you confirm that you have the rights to use this image
+}
+
+```
+
+
