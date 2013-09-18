@@ -183,8 +183,12 @@
 
         // overwrites
         options = extend(options, {
-            mode: "external"
+            mode: "external",
+            contextId: options.shopId,
+            context: "shop"
         });
+
+        delete options.shopId;
 
         url = "//train-sprd." + (platform === "EU" ? "vnet" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
 
@@ -229,7 +233,41 @@
             bootStrapCalled = true;
 
             channel = channel || new Channel(window, iFrame);
-            channel.call("bootStrap", options, callback);
+            channel.call("bootStrap", options, function(err, data) {
+
+                var control;
+                if (!err && data) {
+                    control = {};
+
+                    for (var i = 0; i < data.length; i++) {
+                        (function(method) {
+                            // last parameter is callback
+                            control[method] = function () {
+
+                                var params = Array.prototype.slice.call(arguments),
+                                    callback = params.pop();
+
+                                if (Object.prototype.toString.call(callback) !== "[object Function]") {
+                                    // seems not to be the callback
+                                    params.push(callback);
+                                    callback = null;
+                                }
+
+                                try {
+                                    channel.call("invokeExternalMethod", {
+                                        method: method,
+                                        params: params
+                                    }, callback);
+                                } catch (e) {
+                                    callback && callback(e);
+                                }
+                            }
+                        })(data[i]);
+                    }
+                }
+
+                callback(err, control);
+            });
         }
 
 
