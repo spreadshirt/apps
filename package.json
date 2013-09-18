@@ -1,0 +1,22 @@
+{
+  "name": "sprdapp",
+  "version": "0.1.0",
+  "author": "Tony Findeisen <tony@spreadshirt.net>",
+  "description": "A library to easily implement spreadshirt applications into websites",
+  "scripts": {
+    "build": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/spreadshirt/sprdApp.git"
+  },
+  "keywords": [
+    "spreadshirt"
+  ],
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-uglify": "~0.2.2"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/spreadshirt/sprdApp"
+}
