@@ -5,13 +5,25 @@
 </head>
 <body>
 
-    <script type="text/javascript" src="../sprdapp.js"></script>
-    <script type="text/javascript">
-        spreadshirt.create("tablomat", {
-            productTypeId: 776
-        }, function(err) {
-            alert(err ? "some error" : "no error");
-        });
-    </script>
+<script type="text/javascript" src="../sprdapp.js"></script>
+<script type="text/javascript">
+    spreadshirt.create("tablomat", {
+        shopId: 205909, // your shop id
+        platform: "EU",  // or NA
+        productTypeId: 757
+        // ... additional parameter
+    }, function(err, app) {
+
+        if (err) {
+            // something went wrong
+            console.log(err);
+        } else {
+            // cool I can control the application
+            setTimeout(function() {
+                app.setProductTypeId(6);
+            }, 5000);
+        }
+    });
+</script>
 </body>
 </html>
