@@ -2,7 +2,12 @@
 
     var spreadshirt = window.spreadshirt = window.spreadshirt || {},
         applications = {
-            "tablomat": Tablomat
+            tablomat: Tablomat,
+            productomat: Productomat
+        },
+        supportedLanguages = {
+            NA: ["en", "fr"],
+            EU: ["de", "dk", "pl", "fi", "en", "fr", "es", "nl", "it", "no", "se"]
         };
 
     if (!Array.prototype.indexOf) {
@@ -140,10 +145,9 @@
     function Application(options) {
     }
 
-    function Tablomat(options, cb) {
+    function rAppidApplication(url, options, cb) {
 
-        var url,
-            callbackCalled = false,
+        var callbackCalled = false,
             callback = function (err, data) {
                 if (callbackCalled) {
                     return;
@@ -152,16 +156,13 @@
                 callbackCalled = true;
                 cb && cb(err, data);
             },
-            language, country, platform,
+            platform,
             iFrame,
             initializationTimer,
             initialized = false,
             bootStrapCalled = false,
-            channel,
-            supportedLanguages = {
-                NA: ["en", "fr"],
-                EU: ["de", "dk", "pl", "fi", "en", "fr", "es", "nl", "it", "no", "se"]
-            };
+            channel;
+
 
         options = extend({
             platform: "EU",
@@ -171,13 +172,6 @@
         }, options);
 
         platform = options.platform === "NA" ? "NA" : "EU";
-        country = platform === "EU" ? "DE" : "US";
-        language = window.navigator.language || "en";
-
-        if (supportedLanguages[platform].indexOf(language) === -1) {
-            // fallback
-            language = "en";
-        }
 
         options.shopId = options.shopId || (platform === "EU" ? 205909 : 93439);
 
@@ -190,7 +184,6 @@
 
         delete options.shopId;
 
-        url = "//spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
 
         if (window.location.protocol === "file:") {
             url = "http:" + url;
@@ -233,14 +226,14 @@
             bootStrapCalled = true;
 
             channel = channel || new Channel(window, iFrame);
-            channel.call("bootStrap", options, function(err, data) {
+            channel.call("bootStrap", options, function (err, data) {
 
                 var control;
                 if (!err && data) {
                     control = {};
 
                     for (var i = 0; i < data.length; i++) {
-                        (function(method) {
+                        (function (method) {
                             // last parameter is callback
                             control[method] = function () {
 
@@ -257,7 +250,13 @@
                                     channel.call("invokeExternalMethod", {
                                         method: method,
                                         params: params
-                                    }, callback);
+                                    }, function(err, data) {
+
+                                        data = data || [];
+                                        data.unshift(err);
+
+                                        callback && callback.apply(this, data);
+                                    });
                                 } catch (e) {
                                     callback && callback(e);
                                 }
@@ -282,9 +281,27 @@
 
                 bootStrap();
             }
+        }
+    }
 
+    function Tablomat(options, callback) {
+        var url,
+            platform = options.platform === "NA" ? "NA" : "EU",
+            country = platform === "EU" ? "DE" : "US",
+            language = window.navigator.language || "en";
+
+        if (supportedLanguages[platform].indexOf(language) === -1) {
+            // fallback
+            language = "en";
         }
 
+        url = "//spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
+
+        rAppidApplication.prototype.constructor.call(this, url, options, callback);
+    }
+
+    function Productomat(options, callback) {
+        rAppidApplication.prototype.constructor.call(this, '//sales.dev/www', options, callback);
     }
 
     Tablomat.prototype = new Application();
