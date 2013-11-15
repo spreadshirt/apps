@@ -135,6 +135,9 @@ var possibleParameter = {
     printTypeId: null
     fontFamilyId: null
     
+    // add custom css
+    cssUrl: null // URL to the css file
+    
     // config the text panel
     disableTextAdd: null
     disableTextDeletion: null
