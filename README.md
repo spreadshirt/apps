@@ -3,14 +3,14 @@ sprdApp
 
 **This solution is currently not official mentained by Spreadshirt**
 
-with [Spreadshirt](http://spreadshirt.net)  you bring your T-Shirt ideas to live. You can open you own shop or publish your custom T-Shirt creations on the marketplace. But, what if you want more, like embedding the HTML5 T-Shirt designer in your own webpage?
+with [Spreadshirt](http://spreadshirt.net) you bring your T-Shirt ideas to live. You can open you own shop or publish your custom T-Shirt creations on the marketplace. But, what if you want more, like embedding the HTML5 T-Shirt designer in your own webpage?
 
 Here comes the one-line embed solution.
 
 ```html
 <body>
 <!-- CDN will follow, when project is offically supported by Spreadshirt -->
-<script type="text/javascript" src="sprdapps.min.js"></script>
+<script type="text/javascript" src="spreadshirt.js"></script>
 <script type="text/javascript">
     spreadshirt.create("tablomat", {
         shopId: 123456, // your shop id
@@ -30,8 +30,47 @@ Here comes the one-line embed solution.
 
 </body>
 ```
+You can also embed a lightwight version of the T-Shirt designer (Productomat) with text functionality.
 
-Parameter
+Here comes the code.
+
+```html
+<body>
+<!-- CDN will follow, when project is offically supported by Spreadshirt -->
+<script type="text/javascript" src="spreadshirt.js"></script>
+<script type="text/javascript">
+    spreadshirt.create("productomat", {
+        shopId: 123456, // your shop id
+        platform: "EU"  // or NA
+        // ... additional parameter
+    }, function(err, app) {
+
+        if (err) {
+            // something went wrong
+            console.log(err);
+        } else {
+            // cool I can control the application
+            app.setProductTypeId(6);
+        }
+    });
+    
+    (function (window, document) {
+        // save the product and log the productId 
+        document.getElementById('YOUR_SAVE_BUTTON').onclick = function (e) {
+            sprdApp.saveProduct(function (err, productId) {
+                if (!err) {
+                    console.log(productId);
+                }
+            });
+        };
+    })(window, document);
+</script>
+
+</body>
+```
+
+
+Parameters | Tablomat
 ---
 
 ```js
@@ -82,6 +121,29 @@ var possibleParameter = {
 }
 ```
 
+Parameters | Productomat
+---
+
+```js
+var possibleParameter = {
+    
+    /*
+     * additional to the Tablomat parameters ...
+     */
+    
+    // default printType and fontFamily
+    printTypeId: null
+    fontFamilyId: null
+    
+    // config the text panel
+    disableTextAdd: null
+    disableTextDeletion: null
+    disableTextColorChange: true,
+    disablePrintTypeChange: true,
+    disableTextTools: true,
+}
+```
+
 Control the application
 ---
 
@@ -101,9 +163,7 @@ setProductType: function(productTypeId, callback) {
 getProductType: function(callback) {
     // returns the id of the current product type
 }
-```
 
-```js
 setAppearanceId: function(appearanceId, callback) {
     // switches to the appearance of the current product type
     
@@ -119,6 +179,8 @@ getAppearanceColor: function(callback) {
 }
 ```
 
+
+
 ### Configurations
 
 ```js
@@ -130,7 +192,6 @@ addImage: function(url, callback) {
     // url to the image
     // AGAIN: you confirm that you have the rights to use this image
 }
-
 ```
 
 
