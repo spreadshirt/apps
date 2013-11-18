@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         uglify: {
             build: {
                 files: {
-                    'sprdapp.min.js': ['sprdapp.js']
+                    'spreadshirt.min.js': ['spreadshirt.js']
                 }
             }
         }
