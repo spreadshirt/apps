@@ -5,7 +5,7 @@ module.exports = function (grunt) {
         uglify: {
             build: {
                 options: {
-                    banner: "/*\nThe MIT License (MIT) \nCopyright (c) 2013 Tony Findeisen\nhttps://github.com/spreadshirt/sprdApp/blob/master/LICENSE\n*/\n"
+                    banner: "/*\nMIT License\nCopyright (c) 2013 Tony Findeisen\nhttps://github.com/spreadshirt/sprdApp/blob/master/LICENSE\n*/\n"
                 },
                 files: {
                     'spreadshirt.min.js': ['spreadshirt.js']
