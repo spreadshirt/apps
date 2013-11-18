@@ -302,6 +302,10 @@
 
         url = "//spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
 
+        if (options.url) {
+            url = options.url;
+        }
+
         rAppidApplication.prototype.constructor.call(this, url, options, callback);
     }
 
@@ -311,9 +315,12 @@
             country = platform === "EU" ? "DE" : "US",
             language = window.navigator.language || "en";
 
-        console.log(location.hostname);
-
         url = "//spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Productomat/Index";
+
+        if (options.url) {
+            url = options.url;
+        }
+
 
         rAppidApplication.prototype.constructor.call(this, url, options, callback);
     }
