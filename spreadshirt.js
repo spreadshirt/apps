@@ -301,7 +301,16 @@
     }
 
     function Productomat(options, callback) {
-        rAppidApplication.prototype.constructor.call(this, '//sales.dev/www', options, callback);
+        var url,
+            platform = options.platform === "NA" ? "NA" : "EU",
+            country = platform === "EU" ? "DE" : "US",
+            language = window.navigator.language || "en";
+
+        console.log(location.hostname);
+
+        url = "//spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Productomat/Index";
+
+        rAppidApplication.prototype.constructor.call(this, url, options, callback);
     }
 
     Tablomat.prototype = new Application();
