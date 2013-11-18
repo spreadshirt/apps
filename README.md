@@ -3,14 +3,13 @@ sprdApp
 
 **This solution is currently not official mentained by Spreadshirt**
 
-with [Spreadshirt](http://spreadshirt.net) you bring your T-Shirt ideas to live. You can open you own shop or publish your custom T-Shirt creations on the marketplace. But, what if you want more, like embedding the HTML5 T-Shirt designer in your own webpage?
+with [Spreadshirt](http://www.spreadshirt.net) you bring your T-Shirt ideas to live. You can open you own shop or publish your custom T-Shirt creations on the marketplace. But, what if you want more, like embedding the HTML5 T-Shirt designer in your own webpage?
 
 Here comes the one-line embed solution.
 
 ```html
 <body>
-<!-- CDN will follow, when project is offically supported by Spreadshirt -->
-<script type="text/javascript" src="spreadshirt.js"></script>
+<script type="text/javascript" src="//www.spreadshirt.net/Public/Common/Js/spreadshirt.js"></script>
 <script type="text/javascript">
     spreadshirt.create("tablomat", {
         shopId: 123456, // your shop id
@@ -36,8 +35,7 @@ Here comes the code.
 
 ```html
 <body>
-<!-- CDN will follow, when project is offically supported by Spreadshirt -->
-<script type="text/javascript" src="spreadshirt.js"></script>
+<script type="text/javascript" src="//www.spreadshirt.net/Public/Common/Js/spreadshirt.js"></script>
 <script type="text/javascript">
     spreadshirt.create("productomat", {
         shopId: 123456, // your shop id
@@ -70,7 +68,7 @@ Here comes the code.
 ```
 
 
-Parameters | Tablomat
+Parameters
 ---
 
 ```js
@@ -121,7 +119,7 @@ var possibleParameter = {
 }
 ```
 
-Parameters | Productomat
+Additional possible parameters for the Productomat 
 ---
 
 ```js
@@ -132,18 +130,18 @@ var possibleParameter = {
      */
     
     // default printType and fontFamily
-    printTypeId: null
-    fontFamilyId: null
+    printTypeId: null,  // e.g. 17 for digital direct printing
+    fontFamilyId: null,
     
     // add custom css
-    cssUrl: null // URL to the css file
+    cssUrl: null, // URL to the css file
     
     // config the text panel
-    disableTextAdd: null
-    disableTextDeletion: null
-    disableTextColorChange: true,
-    disablePrintTypeChange: true,
-    disableTextTools: true,
+    disableTextAdd: null,               // disables the add text button
+    disableTextDeletion: null,          // user cannot delete text configurations
+    disableTextColorChange: true,       // prevent user from changing the text color
+    disablePrintTypeChange: true,       // prevent user from changing the print type
+    disableTextTools: true,             // disable the font selection tools
 }
 ```
 
@@ -182,8 +180,6 @@ getAppearanceColor: function(callback) {
 }
 ```
 
-
-
 ### Configurations
 
 ```js
@@ -197,4 +193,10 @@ addImage: function(url, callback) {
 }
 ```
 
+### Additional functions for the Productomat
 
+```js
+save: function(callback) {
+    // callback: function(err, productId) { }
+}
+```
