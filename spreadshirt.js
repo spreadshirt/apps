@@ -1,3 +1,8 @@
+/*
+ MIT License
+ Copyright (c) 2013 Tony Findeisen
+ https://github.com/spreadshirt/sprdApp/blob/master/LICENSE
+ */
 (function (window, document) {
 
     var spreadshirt = window.spreadshirt = window.spreadshirt || {},
