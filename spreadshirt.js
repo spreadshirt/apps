@@ -300,7 +300,7 @@
             language = "en";
         }
 
-        url = "//spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
+        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
 
         if (options.url) {
             url = options.url;
@@ -315,7 +315,7 @@
             country = platform === "EU" ? "DE" : "US",
             language = window.navigator.language || "en";
 
-        url = "//spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Productomat/Index";
+        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Productomat/Index";
 
         if (options.url) {
             url = options.url;
