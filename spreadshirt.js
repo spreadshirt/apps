@@ -295,6 +295,8 @@
             country = platform === "EU" ? "DE" : "US",
             language = window.navigator.language || "en";
 
+        language = language.split("-")[0];
+
         if (supportedLanguages[platform].indexOf(language) === -1) {
             // fallback
             language = "en";
@@ -314,6 +316,13 @@
             platform = options.platform === "NA" ? "NA" : "EU",
             country = platform === "EU" ? "DE" : "US",
             language = window.navigator.language || "en";
+
+        language = language.split("-")[0];
+
+        if (supportedLanguages[platform].indexOf(language) === -1) {
+            // fallback
+            language = "en";
+        }
 
         url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Productomat/Index";
 
