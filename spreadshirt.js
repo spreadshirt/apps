@@ -8,7 +8,8 @@
     var spreadshirt = window.spreadshirt = window.spreadshirt || {},
         applications = {
             tablomat: Tablomat,
-            productomat: Productomat
+            productomat: Productomat,
+            shop: Shop
         },
         supportedLanguages = {
             NA: ["en", "fr"],
@@ -150,7 +151,7 @@
     function Application(options) {
     }
 
-    function rAppidApplication(url, options, cb) {
+    function RappidApplication(url, options, cb) {
 
         var callbackCalled = false,
             callback = function (err, data) {
@@ -308,7 +309,7 @@
             url = options.url;
         }
 
-        rAppidApplication.prototype.constructor.call(this, url, options, callback);
+        RappidApplication.prototype.constructor.call(this, url, options, callback);
     }
 
     function Productomat(options, callback) {
@@ -331,7 +332,32 @@
         }
 
 
-        rAppidApplication.prototype.constructor.call(this, url, options, callback);
+        RappidApplication.prototype.constructor.call(this, url, options, callback);
+    }
+
+    function Shop(options, callback) {
+        var url,
+            platform = options.platform === "NA" ? "NA" : "EU",
+            country = platform === "EU" ? "DE" : "US",
+            language = window.navigator.language || "en";
+
+        language = language.split("-")[0];
+
+        if (supportedLanguages[platform].indexOf(language) === -1) {
+            // fallback
+            language = "en";
+        }
+
+        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Shop5/Index/external";
+
+        if (options.url) {
+            url = options.url;
+        }
+
+        options.country = options.country || country;
+        options.language = options.language || language;
+
+        RappidApplication.prototype.constructor.call(this, url, options, callback);
     }
 
     Tablomat.prototype = new Application();
