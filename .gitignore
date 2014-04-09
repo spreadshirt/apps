@@ -13,5 +13,7 @@ logs
 results
 
 node_modules
+_site
+atlassian-ide-plugin.xml
 
 npm-debug.log
