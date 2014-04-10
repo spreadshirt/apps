@@ -162,6 +162,7 @@
                 callbackCalled = true;
                 cb && cb(err, data);
             },
+            proxy = {},
             platform,
             iFrame,
             initializationTimer,
@@ -190,6 +191,14 @@
 
         delete options.shopId;
 
+        // as we cannot pass functions via post message, we need to wrap those
+        for (var key in options) {
+            if (options.hasOwnProperty(key) && options[key] instanceof Function) {
+                proxy[key + "Proxy"] = options[key];
+                // let the client know that it should build a proxy for it
+                options[key] = key + "Proxy";
+            }
+        }
 
         if (window.location.protocol === "file:") {
             url = "http:" + url;
@@ -281,11 +290,39 @@
                 return;
             }
 
-            if (event.data === "initialized") {
+            var message = event.data;
+            if (message === "initialized") {
                 initialized = true;
                 initializationTimer && clearTimeout(initializationTimer);
 
                 bootStrap();
+            } else {
+
+                var proxyMethod = message.method,
+                    method = proxy[proxyMethod];
+
+                if (method) {
+
+                    var params = message.data;
+                    params.push(function(err) {
+                        var args = Array.prototype.slice.call(arguments) || [];
+                        args.shift();
+
+                        return event.source.postMessage({
+                            messageId: message.messageId,
+                            error: err,
+                            data: args
+                        }, "*");
+                    });
+
+                    // TODO: distinguish between async and sync methods
+                    // call method async
+                    method.apply(this, params);
+
+                } else {
+
+                }
+
             }
         }
     }
