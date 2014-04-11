@@ -398,4 +398,18 @@
     Tablomat.prototype = new Application();
     Tablomat.prototype.constructor = Tablomat;
 
+    var spreadshirtLoaded = window.spreadshirtLoaded;
+    if (spreadshirtLoaded && spreadshirtLoaded instanceof Function) {
+        spreadshirtLoaded = [spreadshirtLoaded];
+    }
+
+    if (spreadshirtLoaded instanceof Array) {
+        for (var i = 0; i < spreadshirtLoaded.length; i++) {
+            try {
+                // invoke lazy load callbacks
+                spreadshirtLoaded[i](spreadshirt);
+            } catch (e) {
+            }
+        }
+    }
 })(window, document);
