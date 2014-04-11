@@ -1,7 +1,7 @@
 /*!
  MIT License
  Copyright (c) 2013 sprd.net AG - Tony Findeisen
- https://github.com/spreadshirt/apps/blob/master/LICENSE
+ https://github.com/spreadshirt/apps/blob/gh-pages/LICENSE
  */
 (function (window, document) {
 
