@@ -5,20 +5,80 @@ module.exports = function (grunt) {
         uglify: {
             build: {
                 options: {
-                    banner: "/*\nMIT License\nCopyright (c) 2013 Tony Findeisen\nhttps://github.com/spreadshirt/sprdApp/blob/master/LICENSE\n*/\n"
+                    preserveComments: "some"
                 },
                 files: {
                     'spreadshirt.min.js': ['spreadshirt.js']
+                }
+            }
+        },
+
+        sass: {
+            dist: {
+                files: {
+                    "css/style.css": "scss/app.scss"
+                }
+            }
+        },
+
+        uncss: {
+            dist: {
+                src: ['_site/index.html', '_site/agb.html', '_site/impressum.html', '_site/rechtliches.html'],
+                dest: 'css/style.css',
+                options: {
+                    ignoreSheets: [/fonts\.googleapis/]
+                }
+            }
+        },
+
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 version', 'ie 8', 'ie 9'],
+                expand: true,
+                flatten: true
+            },
+            css: {
+                src: "css/style.css",
+                dest: "css/style.css"
+            }
+        },
+
+        cssmin: {
+            combine: {
+                files: {
+                    'css/style.css': ['css/style.css']
+                }
+            }
+        },
+
+        watch: {
+            sass: {
+                files: ["scss/*"],
+                task: ["sass"],
+                options: {
+                    spawn: false
                 }
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-autoprefixer');
+    grunt.loadNpmTasks('grunt-uncss');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
 
     // Default task
-    grunt.registerTask('default', ['build']);
-    grunt.registerTask('build', ['uglify:build']);
+    grunt.registerTask('default', ['sass', 'watch']);
+    grunt.registerTask('build', ['build-before', 'build-after']);
+
+    // before jekyll runs
+    grunt.registerTask('build-before', ['uglify']);
+
+    // after jekyll has run
+    grunt.registerTask('build-after', ['sass', 'uncss', 'autoprefixer', 'cssmin']);
+
 
 };
