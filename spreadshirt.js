@@ -200,9 +200,7 @@
             }
         }
 
-        if (window.location.protocol === "file:") {
-            url = "http:" + url;
-        }
+        url = url.replace(/^file/i, "http");
 
         if (window.addEventListener) {
             window.addEventListener("message", receiveMessage, false);
