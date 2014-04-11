@@ -224,6 +224,7 @@
 
         iFrame.setAttribute("width", options.width);
         iFrame.setAttribute("height", options.height);
+        iFrame.setAttribute("style", "border: 0");
 
         iFrame.src = url;
         options.target.appendChild(iFrame);
