@@ -191,12 +191,8 @@ addImage: function(url, callback) {
     // url to the image
     // AGAIN: you confirm that you have the rights to use this image
 }
-```
 
-### Additional functions for the Productomat
-
-```js
-save: function(callback) {
-    // callback: function(err, productId) { }
+saveProduct: function(callback) {
+    // returns the id of the current product when clicking the "add to basket" button
 }
 ```
