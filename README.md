@@ -1,9 +1,9 @@
 sprdApp
 =======
 
-**This solution is currently not official mentained by Spreadshirt**
+With [Spreadshirt](http://www.spreadshirt.net) you bring your T-Shirt ideas to live. You can open you own shop or publish your custom T-Shirt creations on the marketplace. But, what if you want more, like embedding the HTML5 T-Shirt designer in your own web page?
 
-with [Spreadshirt](http://www.spreadshirt.net) you bring your T-Shirt ideas to live. You can open you own shop or publish your custom T-Shirt creations on the marketplace. But, what if you want more, like embedding the HTML5 T-Shirt designer in your own webpage?
+See http://spreadshirt.github.io/apps for demonstration.
 
 Here comes the one-line embed solution.
 
@@ -29,7 +29,7 @@ Here comes the one-line embed solution.
 
 </body>
 ```
-You can also embed a lightwight version of the T-Shirt designer (Productomat) with text functionality.
+You can also embed a lightweight version of the T-Shirt designer (Productomat) with text functionality.
 
 Here comes the code.
 
