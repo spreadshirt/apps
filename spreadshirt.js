@@ -200,6 +200,10 @@
             }
         }
 
+        if (window.location.protocol === "file:" && /^\/{2}/.test(url)) {
+            url = "http:" + url;
+        }
+
         url = url.replace(/^file/i, "http");
 
         if (window.addEventListener) {
