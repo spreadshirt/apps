@@ -9,7 +9,7 @@ Here comes the one-line embed solution.
 
 ```html
 <body>
-<script type="text/javascript" src="//www.spreadshirt.net/Public/Common/Js/spreadshirt.min.js"></script>
+<script type="text/javascript" src="//spreadshirt.github.io/apps/spreadshirt.min.js"></script>
 <script type="text/javascript">
     spreadshirt.create("tablomat", {
         shopId: 123456, // your shop id
@@ -35,7 +35,7 @@ Here comes the code.
 
 ```html
 <body>
-<script type="text/javascript" src="//www.spreadshirt.net/Public/Common/Js/spreadshirt.min.js"></script>
+<script type="text/javascript" src="//spreadshirt.github.io/apps/spreadshirt.min.js"></script>
 <script type="text/javascript">
     spreadshirt.create("productomat", {
         shopId: 123456, // your shop id
