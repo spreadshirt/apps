@@ -58,10 +58,10 @@ q {
 }
 
 #hero {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 80%), url(/img/hero.jpg) center center no-repeat;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0) 80%), url(img/hero.jpg) center center no-repeat;
 
   @media #{$small-only} {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0.6) 80%), url(/img/hero.jpg) center center no-repeat;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 40%, rgba(0, 0, 0, 0.6) 80%), url(img/hero.jpg) center center no-repeat;
   }
 
   background-size: cover;
