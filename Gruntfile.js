@@ -21,16 +21,6 @@ module.exports = function (grunt) {
             }
         },
 
-        uncss: {
-            dist: {
-                src: ['_site/index.html', '_site/agb.html', '_site/impressum.html', '_site/rechtliches.html'],
-                dest: 'css/style.css',
-                options: {
-                    ignoreSheets: [/fonts\.googleapis/]
-                }
-            }
-        },
-
         autoprefixer: {
             options: {
                 browsers: ['last 2 version', 'ie 8', 'ie 9'],
@@ -65,7 +55,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
-    grunt.loadNpmTasks('grunt-uncss');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
@@ -78,7 +67,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build-before', ['uglify']);
 
     // after jekyll has run
-    grunt.registerTask('build-after', ['sass', 'uncss', 'autoprefixer', 'cssmin']);
+    grunt.registerTask('build-after', ['sass', 'autoprefixer', 'cssmin']);
 
 
 };
