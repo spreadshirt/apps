@@ -16,7 +16,7 @@ module.exports = function (grunt) {
         sass: {
             dist: {
                 files: {
-                    "css/style.css": "scss/app.scss"
+                    "css/style.css": "css/app.scss"
                 }
             }
         },
@@ -60,14 +60,7 @@ module.exports = function (grunt) {
 
 
     // Default task
-    grunt.registerTask('default', ['sass', 'watch']);
-    grunt.registerTask('build', ['build-before', 'build-after']);
-
-    // before jekyll runs
-    grunt.registerTask('build-before', ['uglify']);
-
-    // after jekyll has run
-    grunt.registerTask('build-after', ['sass', 'autoprefixer', 'cssmin']);
-
+    grunt.registerTask('default', ['build', 'watch']);
+    grunt.registerTask('build', ['uglify', 'sass', 'autoprefixer', 'cssmin']);
 
 };
