@@ -1,10 +1,140 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Test</title>
-</head>
-<body>
-    Coming soon.
-</body>
-</html>
+---
+layout: default
+title: Spreadshirt apps
+---
+
+<section id="hero">
+    <div class="row">
+        <div class="small-12 medium-8 large-6 columns" style="">
+            <h1>Easily start with Spreadshirt.</h1><br>
+            <h4>
+                Spreadshirt apps let you embed our applications easily in
+                your web page. You can control it via javascript.
+            </h4>
+        </div>
+    </div>
+</section>
+
+
+<section class="main-content">
+    <div class="row space-before">
+        <div class="medium-8 medium-centered columns centered-text">
+            <h4 class="subheader space-after">
+                <q>There are unlimited possibilities what you can do with Spreadshirt.
+                   Find your business and start selling T-Shirts today.</q>
+            </h4>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="row space-after">
+        <hr>
+        <div class="large-12 columns centered-text">
+            <h2>Tablomat</h2>
+            <h4 class="subheader">
+                Full features, responsive T-Shirt designer.
+            </h4>
+        </div>
+    </div>
+
+    <div class="row space-after">
+        <div class="large-12 columns" id="tablomatContainer">
+            <script type="text/javascript">
+                window.spreadshirtLoaded = window.spreadshirtLoaded || [];
+                window.spreadshirtLoaded.push(function(spreadshirt) {
+                    // invoked when the spreadshirt library is loaded
+                    spreadshirt.create("tablomat", {
+                        target: document.getElementById("tablomatContainer"),
+                        shopId: 205909,
+                        platform: "EU"
+                    });
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="row centered-text">
+        <div class="medium-6 large-3 columns">
+            <div class="icon icon-rulers"></div>
+
+            <h3>Responsive</h3>
+
+            <p>
+                Fits into your site independent from the size.
+            </p>
+        </div>
+        <div class="medium-6 large-3 columns">
+            <div class="icon-point-up icon"></div>
+
+            <h3>Touch friendly</h3>
+
+            <p>
+                Designed from scratch with the mobile first approach.
+            </p>
+        </div>
+        <div class="medium-6 large-3 columns">
+            <div class="icon-puzzle icon"></div>
+
+            <h3>Modular</h3>
+
+            <p>
+                Designed in a modular way to just load what is necessary.
+            </p>
+
+        </div>
+        <div class="medium-6 large-3 columns">
+            <div class="icon-equalizer icon"></div>
+
+            <h3>Scriptable</h3>
+
+            <p>
+                Extend & control the application with javascript.
+            </p>
+        </div>
+    </div>
+
+    <div class="space-before space-after centered-text">
+        <a class="button" href="tablomat">Learn how to embed the Tablomat</a>
+    </div>
+
+</section>
+
+
+<section id="newsletter" class="space-before">
+    <div class="row">
+
+        <div class="medium-8 columns">
+            <h5>Our tool set grows permanent.</h5>
+
+            <p>
+                Follow <a href="https://twitter.com/spreadshirtdevs">@SpreadshirtDevs</a> to keep up to date with
+                our newest developments and upcoming releases.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="medium-8 columns">
+            <h5>Feedback?</h5>
+
+            <p>
+                Your feedback helps us to get better. Take some short time and tell us
+                what we can do better. Found an issue? Fail a <a href="https://github.com/spreadshirt/apps/issues/new">bug</a>!
+            </p>
+
+        </div>
+
+        <div class="medium-4 columns">
+            <p>
+                <a href="mailto:tony@spreadshirt.net?subject=Feedback&body=Thanks for your feedback!" class="button small expand">Give helpful feedback</a>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<script type="text/javascript" src="spreadshirt.min.js" async="async"></script>

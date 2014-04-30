@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'apps';
+  src: url('/fonts/apps.eot');
+  src: url('/fonts/apps.eot?#iefix') format('embedded-opentype'), url('/fonts/apps.woff') format('woff'), url('/fonts/apps.ttf') format('truetype'), url('/fonts/apps.svg#apps') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'apps';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-spreadshirt:after {
+  content: "\53";
+}
+
+.icon-tablet:after {
+  content: "\e0c7";
+}
+
+.icon-expand:after {
+  content: "\e135";
+}
+
+.icon-equalizer:after {
+  content: "\e141";
+}
+
+.icon-bug:after {
+  content: "\e150";
+}
+
+.icon-trophy-star:after {
+  content: "\e171";
+}
+
+.icon-puzzle:after {
+  content: "\e1a7";
+}
+
+.icon-point-up:after {
+  content: "\e23e";
+}
+
+.icon-rulers:after {
+  content: "\e2ed";
+}
