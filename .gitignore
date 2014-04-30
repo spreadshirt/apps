@@ -15,7 +15,6 @@ results
 node_modules
 _site
 atlassian-ide-plugin.xml
-css
 
 npm-debug.log
 
