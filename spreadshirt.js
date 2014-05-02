@@ -184,7 +184,7 @@
 
         // overwrites
         options = extend(options, {
-            mode: "external",
+            mode: (options.mode === "partner" ? "partner" : "external"),
             contextId: options.shopId,
             context: "shop"
         });
