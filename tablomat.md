@@ -31,11 +31,37 @@ error occurred.
 ```
 
 Parameters
----
+===
 
 The parameter shopId and platform should be present. You'll find your shopId in the user
 area of spreadshirt. The platform decided if you like to speak with the European (EU) or the
 North American (NA) platform.
+
+```js
+var requiredParameter = {
+    // required parameter
+    shopId: 123456,         // your own shopId
+    platform: "EU",         // the spreadshirt platform: "EU", "NA"
+};
+```
+
+To change the look and feel of the application you can use the following parameter. By
+default the iframe will use 100% of the width and 700px in height and attaches to the
+`document.body`.
+
+```js
+var layoutParameter = {
+    // iframe size
+    width: "100%",    // width in px or %
+    height: "700px",   // height in px or %
+
+    // render target
+    target: document.getElementById("someDiv")
+};
+```
+
+Deeplinks
+---
 
 All other parameters are optional and change the initialization of the application. E.g. you
 could deeplink a specific productType (iPhone: 776) or add an image to the product. The
@@ -44,9 +70,6 @@ list of product types id, available appearances and designs you get from the
 
 ```js
 var possibleParameter = {
-    // required parameter
-    shopId: 123456,         // your own shopId
-    platform: "EU",         // the spreadshirt platform: "EU", "NA"
 
     // optional design deeplinks
 
@@ -90,8 +113,75 @@ var possibleParameter = {
 }
 ```
 
-Controlling the application
+Custom basket implementation
 ---
+
+If you want to use the Tablomat in your own shop system just as creation tool for custom
+T-Shirts, but want to use your custom checkout you can pass an `addToBasket` function as
+parameter.
+
+The function will be invoked for every size the user selected in size dialog after he
+clicked on add to basket.
+
+```js
+var ownBasketParameter = {
+    addToBasket: function(item, callback) {
+
+         // implement how to get the item to your basket
+         // e.g. do some AJAX request
+
+         // invoke callback function when you're done
+    }
+}
+```
+
+The item has the following structure:
+
+```js
+var item = {
+   quantity: 1,
+   price: {
+       vatExcluded: 20.0,
+       vatIncluded: 23.8,
+       currency: {
+           id: "1",
+           href: "http://www.spreadshirt.net/api/v1/currencies/1"
+       }
+   },
+   product: {
+       id: "111222",
+       href: "http://www.spreadshirt.net/api/v1/shops/123456/products/111222"
+   },
+   appearance: {
+       id: "1",
+       name: "white"
+   },
+   view: {
+       id: "1",
+       name: "front"
+   },
+   productType: {
+       id: "6",
+       name: "Men's T-Shirt"
+   },
+   size: {
+       id: "2",
+       name: "S"
+   }
+}
+```
+
+The callback function has the standard js callback signature.
+
+```js
+callback = function(errorParameter) {
+    // pass false, null or undefined if no error
+    // or call it without an parameter
+}
+```
+
+Controlling the application
+===
 
 Beside the deeplinking feature, the Tablomat can be controlled during runtime by the
 following methods. Each method has its own signature and is executed
@@ -138,7 +228,61 @@ addImage: function(url, callback) {
     // AGAIN: you confirm that you have the rights to use this image
 }
 
-saveProduct: function(callback) {
-    // returns the id of the current product when clicking the "add to basket" button
+```
+
+### Product
+
+```js
+saveProduct: function(productId) {
+    // identifier for getting the product from the api
 }
+
+loadProduct: function(productId, callback) {
+    // loads an product by id
+    // callback is invoked when completed: function(err) {}
+}
+
+getProductModel: function(productModel) {
+    // a product model, representing the state of the currently designed product
+
+    productModel = {
+        price: 23.8,                    // including vat
+        appearanceId: "1",              // color of the shirt
+        sizeId: "2",                    // size id of the product type
+        viewId: "1",                    // view id of the product type
+        productTypeId: "6",             // product type id
+        id: "111222",                   // product id, if deeplinked or saved
+        configurations: [
+            // list of configurations
+            {
+                type: "design" || "text",
+                printAreaId: "1346",    // id of the print area of the product type
+                viewId: "2",            // on which view of the product type
+                perspective: "back",    // mapping of the view to an perspective
+                printTypeId: "14",      // the print technology
+                colors: [],
+                price: 6.0,             // the price including vat
+                designId: "123321",     // the id of the design, if type === "design"
+                text: "foo bar"         // text, if type === "text"
+            },
+            // ...
+        ]
+    }
+}
+```
+
+### Other
+
+```js
+
+openPanel: function(panel) {
+    // opens a specific panel in the tablomat
+    var possibleValues = ["productTypes", "designs", "upload", "imageNetwork"]
+}
+
+searchDesigns: function(searchTerm, openDesignPanel) {
+    // search for a design and opens
+    // the design panel if parameter is true
+}
+
 ```
