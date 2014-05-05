@@ -151,7 +151,7 @@
     function Application(options) {
     }
 
-    function RappidApplication(url, options, cb) {
+    function RappidApplication(url, options, name, cb) {
 
         var callbackCalled = false,
             callback = function (err, data) {
@@ -213,6 +213,7 @@
         }
 
         iFrame = document.createElement("iframe");
+        iFrame.id = name;
 
         iFrame.onload = function () {
 
@@ -349,7 +350,7 @@
             url = options.url;
         }
 
-        RappidApplication.prototype.constructor.call(this, url, options, callback);
+        RappidApplication.prototype.constructor.call(this, url, options, "tablomat", callback);
     }
 
     function Productomat(options, callback) {
@@ -372,7 +373,7 @@
         }
 
 
-        RappidApplication.prototype.constructor.call(this, url, options, callback);
+        RappidApplication.prototype.constructor.call(this, url, options, "productomat", callback);
     }
 
     function Shop(options, callback) {
@@ -397,7 +398,7 @@
         options.country = options.country || country;
         options.language = options.language || language;
 
-        RappidApplication.prototype.constructor.call(this, url, options, callback);
+        RappidApplication.prototype.constructor.call(this, url, options, "shop", callback);
     }
 
     Tablomat.prototype = new Application();
