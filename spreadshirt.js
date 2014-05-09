@@ -168,7 +168,8 @@
             initializationTimer,
             initialized = false,
             bootStrapCalled = false,
-            channel;
+            channel,
+            shopId;
 
 
         options = extend({
@@ -189,6 +190,7 @@
             context: "shop"
         });
 
+        shopId = options.shopId;
         delete options.shopId;
 
         // as we cannot pass functions via post message, we need to wrap those
@@ -205,6 +207,10 @@
         }
 
         url = url.replace(/^file/i, "http");
+
+        if (shopId) {
+            url += "?shopId=" + shopId;
+        }
 
         if (window.addEventListener) {
             window.addEventListener("message", receiveMessage, false);
