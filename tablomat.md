@@ -6,9 +6,11 @@ title: Tablomat
 Embed the Tablomat
 ===
 
-Embed the Tablomat with the following code snipped. In the callback you get an application
-instance to control the application from your script context or an error instance if any
-error occurred.
+Embed the Tablomat with the following code snipped. The best position for this script block is just before the end body, but it's also fine to put in into the head section or load it lazy with a dynamic script loaded when needed. The render position is controlled by the `target` parameter (see below). 
+
+
+In the callback you get an application instance to control the application from your script context or an 
+error instance if any error occurred.
 
 ```html
 <script type="text/javascript" src="//spreadshirt.github.io/apps/spreadshirt.min.js"></script>
