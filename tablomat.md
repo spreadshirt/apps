@@ -287,4 +287,17 @@ searchDesigns: function(searchTerm, openDesignPanel) {
     // the design panel if parameter is true
 }
 
+/***
+ * sets a text on a text configuration
+ * 
+ * @since 8.27.0
+ *
+ * @param {Number} options.configurationIndex - the index of the configuration to modify
+ * @param {String} options.text - the text to set
+ * @returns {boolean} - true if setting text was possible
+ */
+setText: function(options) {
+    // sets a text on a text configuration
+}
+
 ```
