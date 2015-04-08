@@ -14,7 +14,15 @@
         supportedLanguages = {
             NA: ["en", "fr"],
             EU: ["de", "dk", "pl", "fi", "en", "fr", "es", "nl", "it", "no", "se"]
-        };
+        },
+        stringifyMessage = isIE();
+
+    stringifyMessage = stringifyMessage && stringifyMessage <= 9;
+
+    function isIE () {
+        var myNav = navigator.userAgent.toLowerCase();
+        return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
+    }
 
     if (!Array.prototype.indexOf) {
         Array.prototype.indexOf = function (searchElement /*, fromIndex */) {
@@ -112,7 +120,7 @@
 
         function receiveMessage(event) {
 
-            var data = event.data,
+            var data = stringifyMessage ? JSON.parse(event.data) : event.data,
                 messageId = data.messageId,
                 callback = callbackCache[messageId];
 
@@ -138,11 +146,17 @@
 
                 callbackCache[id] = callback;
 
-                targetWindow.contentWindow.postMessage({
+                var message = {
                     messageId: id,
                     method: method,
                     data: data
-                }, origin);
+                };
+
+                if (stringifyMessage) {
+                    message = JSON.stringify(message);
+                }
+
+                targetWindow.contentWindow.postMessage(message, origin);
             }
         }
 
@@ -318,11 +332,17 @@
                         var args = Array.prototype.slice.call(arguments) || [];
                         args.shift();
 
-                        return event.source.postMessage({
+                        var value = {
                             messageId: message.messageId,
                             error: err,
                             data: args
-                        }, "*");
+                        };
+
+                        if (stringifyMessage) {
+                            value = JSON.stringify(value);
+                        }
+
+                        return event.source.postMessage(value, "*");
                     });
 
                     // TODO: distinguish between async and sync methods
