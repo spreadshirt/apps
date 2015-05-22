@@ -95,7 +95,7 @@ var possibleParameter = {
     // product type
     productTypeId: null,    // start with the product type - cannot be used in combination with productId
 
-    // text deeplinks
+    // text deeplinks, the won't work without deeplinking a productType || product || basketItem
     tx1: null,              // first line of text
     tx2: null,              // second line of text ...
     tx3: null,              // ... and guess, the third line
