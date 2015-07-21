@@ -322,6 +322,8 @@
                 bootStrap();
             } else {
 
+                message = stringifyMessage ? JSON.parse(message) : message;
+
                 var proxyMethod = message.method,
                     method = proxy[proxyMethod];
 
