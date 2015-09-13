@@ -111,7 +111,9 @@ var possibleParameter = {
     designCategoryId: null, // open this designCategory
     designSearch: null,     // or perform a search for designs with the term
 
-    panel: null             // show the following panel first - "productTypes", "designs", "upload", "imageNetwork"
+    panel: null,             // show the following panel first - "productTypes", "designs", "upload", "imageNetwork"
+    
+    apiBasketId: null       // the id of the api basket to use
 }
 ```
 
