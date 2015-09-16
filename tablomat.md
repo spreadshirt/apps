@@ -135,7 +135,12 @@ var ownBasketParameter = {
          // e.g. do some AJAX request
 
          // invoke callback function when you're done
-    }
+         
+         var err = null; // set to a js truly type for showing an error in tabloat,
+         // see http://www.sitepoint.com/javascript-truthy-falsy/
+         
+         callback && callback(err);
+    
 }
 ```
 
