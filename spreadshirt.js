@@ -382,6 +382,8 @@
             url = options.url;
         }
 
+        options.shopId = "" + (options.shopId || "");
+
         RappidApplication.prototype.constructor.call(this, url, options, "tablomat", callback);
     }
 
