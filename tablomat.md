@@ -58,7 +58,8 @@ var layoutParameter = {
     height: "700px",   // height in px or %
 
     // render target
-    target: document.getElementById("someDiv")
+    target: document.getElementById("someDiv"),
+    shareUrlTemplate: "https://example.com/create#productId={PRODUCT_ID}&viewId={VIEW_ID}"
 };
 ```
 
