@@ -114,7 +114,7 @@ var possibleParameter = {
 
     panel: null,             // show the following panel first - "productTypes", "designs", "upload", "imageNetwork"
     
-    apiBasketId: null       // the id of the api basket to use
+    basketId: null       // the id of the api basket to use
 }
 ```
 
