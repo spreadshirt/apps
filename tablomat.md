@@ -90,7 +90,8 @@ var possibleParameter = {
     // product relevant deeplinks
     productId: null,        // id of an existing product
     appearanceId: null,     // load the appearance (color) for the product type
-    sizeId: null,           // preselect the product type size
+    sizeId: null,           // preselect the product type size in combination with quantity
+    quantity: null,         // speficies the quantity, used in combination with sizeId
     viewId: null,           // show this view of the product
 
     // product type
