@@ -361,22 +361,9 @@
 
     function Tablomat(options, callback) {
         var url,
-            platform = options.platform === "NA" ? "NA" : "EU",
-            country = platform === "EU" ? "DE" : "US",
-            language = window.navigator.language || "en";
+            platform = options.platform === "NA" ? "NA" : "EU";
 
-        language = language.split("-")[0];
-
-        if (supportedLanguages[platform].indexOf(language) === -1) {
-            // fallback
-            language = "en";
-        }
-
-        if (platform === "NA" && language === "en") {
-            language = "us";
-        }
-
-        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Tablomat/Index/external";
+        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/df/DF/Tablomat/Index/external";
 
         if (options.url) {
             url = options.url;
