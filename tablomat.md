@@ -101,7 +101,9 @@ var possibleParameter = {
     tx1: null,              // first line of text
     tx2: null,              // second line of text ...
     tx3: null,              // ... and guess, the third line
-
+    
+    isExample: false,       // a boolean flag indicating if the text configuration from tx1= deeplinks is removed or not
+    
     textColorRgb: null,     // you can specify colors either as rgb value
     textColor: null,        // or as id of an print type
 
