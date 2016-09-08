@@ -9,7 +9,8 @@
         applications = {
             tablomat: Tablomat,
             productomat: Productomat,
-            shop: Shop
+            shop: Shop,
+            sketchomat: Sketchomat
         },
         supportedLanguages = {
             NA: ["en", "fr"],
@@ -372,6 +373,21 @@
         options.shopId = "" + (options.shopId || "");
 
         RappidApplication.prototype.constructor.call(this, url, options, "tablomat", callback);
+    }
+
+    function Sketchomat(options, callback) {
+        var url,
+        platform = options.platform === "NA" ? "NA" : "EU";
+
+        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/df/DF/Tablomat/Index/sketchomat/mode/external";
+
+        if (options.url) {
+            url = options.url;
+        }
+
+        options.shopId = "" + (options.shopId || "");
+
+        RappidApplication.prototype.constructor.call(this, url, options, "sketchomat", callback);
     }
 
     function Productomat(options, callback) {
