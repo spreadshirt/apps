@@ -118,7 +118,7 @@ var possibleParameter = {
     panel: null,             // show the following panel first - "productTypes", "designs", "upload", "imageNetwork"
     
     basketId: null       // the id of the api basket to use
-    safeSearch:          // available values "strict" or "off". Default value is always "off"; "strict" enables safe search of designs (excludes offensive content).
+    safeSearch: null     // available values "strict" or "off". By default "off" value is applied; "strict" enables safe search of designs (excludes offensive content).
 }
 ```
 
