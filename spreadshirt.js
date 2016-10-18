@@ -16,6 +16,9 @@
             NA: ["en", "fr"],
             EU: ["de", "dk", "pl", "fi", "en", "fr", "es", "nl", "it", "no", "se"]
         },
+        possibleDeeplinks = [
+            "designUrl", "designId", "designColor1", "designColor2", "designColor3", "designColorRgb1", "designColorRgb2", "designColorRgb3", "articleId", "productId", "appearanceId", "sizeId", "quantity", "viewId", "productTypeId", "tx1", "tx2", "tx3", "textColorRgb", "textColor", "departmentId", "productTypeCategoryId", "designCategoryId", "designSearch", "perspective", "mode", "panel", "basketId", "basketItemId", "editBasketItemUrl", "shareUrlTemplate", "hideVolumeDiscount", "whiteLabeled"
+        ],
         stringifyMessage = isIE();
 
     stringifyMessage = stringifyMessage && stringifyMessage <= 9;
@@ -106,6 +109,36 @@
         return result;
     }
 
+    function defaults (target) {
+        for (var i = 1; i < arguments.length; i++) {
+            target = target || {};
+
+            var d = arguments[i] || {};
+
+            for (var key in d) {
+
+                if (d.hasOwnProperty(key)) {
+                    if (target[key] === undefined && d[key] !== undefined && d[key] !== null) {
+                        target[key] = d[key];
+                    }
+                }
+            }
+        }
+
+        return target;
+    }
+
+    function parseDeeplinks (deeplinks) {
+        var urlParameter = location.search.replace(/^\?/, '').split('&');
+        for (var i = 0; i < urlParameter.length; i++) {
+            var parameter = urlParameter[i].split('=');
+
+            if (deeplinks.hasOwnProperty(parameter[0]) && parameter[1]) {
+                deeplinks[parameter[0]] = decodeURIComponent(parameter[1]);
+            }
+        }
+    }
+
     function Channel(window, targetWindow, origin) {
 
         origin = origin || "*";
@@ -191,8 +224,10 @@
             platform: "EU",
             target: document.body || document.getElementsByTagName("body")[0],
             width: "100%",
-            height: "700px"
+            height: "700px",
+            parseDeeplinks: false
         }, options);
+
 
         platform = options.platform === "NA" ? "NA" : "EU";
 
@@ -204,6 +239,16 @@
             contextId: options.shopId,
             context: "shop"
         });
+
+        if (options.parseDeeplinks) {
+            var deeplinks = {};
+            for (var i = 0; i < possibleDeeplinks.length; i++) {
+                deeplinks[possibleDeeplinks[i]] = null;
+            }
+
+            parseDeeplinks(deeplinks);
+            defaults(options, deeplinks);
+        }
 
         shopId = options.shopId;
         delete options.shopId;

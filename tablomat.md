@@ -71,6 +71,9 @@ could deeplink a specific productType (iPhone: 776) or add an image to the produ
 list of product types id, available appearances and designs you get from the
 [API](https://developer.spreadshirt.net/display/API).
 
+There is also the possibility to automatically parse the deeplinks form the query parameters of the 
+URL by using the option `parseDeeplinks: true`.
+
 ```js
 var possibleParameter = {
 
