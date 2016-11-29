@@ -217,7 +217,8 @@
             initialized = false,
             bootStrapCalled = false,
             channel,
-            shopId;
+            shopId,
+            hasQuestionMark = false;
 
 
         options = extend({
@@ -270,6 +271,12 @@
 
         if (shopId) {
             url += "?shopId=" + shopId;
+            hasQuestionMark = true;
+        }
+
+        if (options.version) {
+            url += (hasQuestionMark ? "&" : "?") + "version=" + options.version;
+            hasQuestionMark = true;
         }
 
         if (window.addEventListener) {
