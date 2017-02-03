@@ -105,6 +105,10 @@ var possibleParameter = {
     tx2: null,              // second line of text ...
     tx3: null,              // ... and guess, the third line
     
+    fontFamilyName: null,   // Cutter, Arial, ...
+    fontFamilyWeight: null, // normal, bold
+    fontFamilyStyle: null,  // normal, italic
+    
     isExample: false,       // a boolean flag indicating if the text configuration from tx1= deeplinks is removed or not
     
     textColorRgb: null,     // you can specify colors either as rgb value
