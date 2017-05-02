@@ -82,50 +82,51 @@ var possibleParameter = {
     designUrl: null,        /* an URL to an image, it will be uploaded.
                              * **You agree that you will have the rights to use this image**
                              */
-    designId: null,         // the id of an exisitng design
-    designColor1: null,     // the printColor Id for layer 1
-    designColor2: null,     //                       layer 2
-    designColor3: null,     //                       layer 3
-    designColorRgb1: null,  // or if you like RGB codes for the following layers
+    designId: null,             // the id of an exisitng design
+    designColor1: null,         // the printColor Id for layer 1
+    designColor2: null,         //                       layer 2
+    designColor3: null,         //                       layer 3
+    designColorRgb1: null,      // or if you like RGB codes for the following layers
     designColorRgb2: null,
     designColorRgb3: null,
 
     // product relevant deeplinks
-    productId: null,        // id of an existing product
-    appearanceId: null,     // load the appearance (color) for the product type
-    sizeId: null,           // preselect the product type size in combination with quantity
-    quantity: null,         // speficies the quantity, used in combination with sizeId
-    viewId: null,           // show this view of the product
+    productId: null,            // id of an existing product
+    appearanceId: null,         // load the appearance (color) for the product type
+    sizeId: null,               // preselect the product type size in combination with quantity
+    quantity: null,             // speficies the quantity, used in combination with sizeId
+    viewId: null,               // show this view of the product
 
     // product type
-    productTypeId: null,    // start with the product type - cannot be used in combination with productId
+    productTypeId: null,        // start with the product type - cannot be used in combination with productId
 
     // text deeplinks, the won't work without deeplinking a productType || product || basketItem
-    tx1: null,              // first line of text
-    tx2: null,              // second line of text ...
-    tx3: null,              // ... and guess, the third line
+    tx1: null,                  // first line of text
+    tx2: null,                  // second line of text ...
+    tx3: null,                  // ... and guess, the third line
     
-    fontFamilyName: null,   // Cutter, Arial, ...
-    fontFamilyWeight: null, // normal, bold
-    fontFamilyStyle: null,  // normal, italic
+    fontFamilyName: null,       // Cutter, Arial, ...
+    fontFamilyWeight: null,     // normal, bold
+    fontFamilyStyle: null,      // normal, italic
     
-    isExample: false,       // a boolean flag indicating if the text configuration from tx1= deeplinks is removed or not
+    isExample: false,           // a boolean flag indicating if the text configuration from tx1= deeplinks is removed or not
     
-    textColorRgb: null,     // you can specify colors either as rgb value
-    textColor: null,        // or as id of an print type
+    textColorRgb: null,         // you can specify colors either as rgb value
+    textColor: null,            // or as id of an print type
 
     // independent
-    departmentId: null,     // load this product type department
-    productTypeCategoryId: null,    // or this product type category
+    departmentId: null,         // load this product type department
+    productTypeCategoryId: null, // or this product type category
 
     // also independent, but for designs
-    designCategoryId: null, // open this designCategory
-    designSearch: null,     // or perform a search for designs with the term
+    designCategoryId: null,     // open this designCategory
+    designSearch: null,         // or perform a search for designs with the term
 
-    panel: null,             // show the following panel first - "productTypes", "designs", "upload", "imageNetwork"
+    panel: null,                // show the following panel first - "productTypes", "designs", "upload", "imageNetwork"
     
-    basketId: null       // the id of the api basket to use
-    safeSearch: null     // available values "strict" or "off". By default "off" value is applied; "strict" enables safe search of designs (excludes offensive content).
+    basketId: null,             // the id of the api basket to use
+    safeSearch: null,           // available values "strict" or "off". By default "off" value is applied; "strict" enables safe search of designs (excludes offensive content).
+    continueShoppingLink: null  // parameter passed to the checkout
 }
 ```
 
