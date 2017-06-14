@@ -134,14 +134,13 @@ var possibleParameter = {
 
 1. basketId && basketItemId - used for edit basket item from the checkout
 2. articleId || productId - start with an article or the product
-3. load last product if there is any and if not loadLastProduct=false is specified
-4. productType || designId || designUrl
-    4.1 productType - use the given product type || use the first one specified in the shop
-    4.2 designId - add the design on the `viewId` or default view
-    4.3 designUrl - upload the image and place it on the `viewId` or default view 
-5. load last product if there is any
-6. load the first article of the shop if there is any
-7. start with an empty shirt of the first productType of the shop
+3. productType or designId or designUrl
+    3.1 productType - use the given product type || use the first one specified in the shop
+    3.2 designId - add the design on the `viewId` or default view
+    3.3 designUrl - upload the image and place it on the `viewId` or default view 
+4. load last product if there is any
+5. load the first article of the shop if there is any
+6. start with an empty shirt of the first productType of the shop
 
 Custom basket implementation
 ---
