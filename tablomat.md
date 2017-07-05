@@ -215,6 +215,20 @@ callback = function(errorParameter) {
 }
 ```
 
+Custom go to checkout implementation
+---
+
+If you're using a custom basket implementation you can get a notification whenever the adding 
+to basket is finished by providing the following method on your parameter object
+
+```js
+var parameter = {
+    onCheckout: function() {
+        // custom logic to go to checkout goes here
+    }
+}
+```
+
 Controlling the application
 ===
 
