@@ -84,6 +84,38 @@
         new app(options, callback);
     };
 
+    spreadshirt.buy = function(options, callback) {
+        options = options || {};
+        callback = callback || function() {};
+
+        var platform = options.platform === "NA" ? "NA" : "EU";
+
+        defaults(options, {
+            url: "//checkout.spreadshirt." + (platform === "EU" ? "net" : "com") + "/buy"
+        });
+
+        var iFrame = document.createElement("iframe");
+        iFrame.id = "buy";
+
+        iFrame.onload = function() {
+            // post
+            var channel = new Channel(window, iFrame, "*");
+            channel.call("checkout", options, callback);
+        };
+
+        iFrame.onerror = callback;
+
+        iFrame.setAttribute("style", "border: 0 none; width: 0; height: 0; visibility: hidden;");
+        iFrame.setAttribute("allowpaymentrequest", "");
+        iFrame.src = options.url;
+        document.getElementsByTagName("body")[0].appendChild(iFrame);
+
+    };
+
+    spreadshirt.buy.isSupported = function() {
+        return !!window.PaymentRequest;
+    };
+
 
     /***
      * extend the first object with all keys from the following objects
