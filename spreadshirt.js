@@ -10,7 +10,8 @@
             tablomat: Tablomat,
             productomat: Productomat,
             shop: Shop,
-            sketchomat: Sketchomat
+            sketchomat: Sketchomat,
+            smartomat: Smartomat
         },
         supportedLanguages = {
             NA: ["en", "fr"],
@@ -308,7 +309,6 @@
 
         if (options.version) {
             url += (hasQuestionMark ? "&" : "?") + "version=" + options.version;
-            hasQuestionMark = true;
         }
 
         if (window.addEventListener) {
@@ -336,6 +336,7 @@
         iFrame.setAttribute("height", options.height);
         iFrame.setAttribute("style", "border: 0");
         iFrame.setAttribute("allowpaymentrequest", "");
+        iFrame.setAttribute("allowfullscreen", "");
 
         iFrame.src = url;
         options.target.appendChild(iFrame);
@@ -473,6 +474,21 @@
         options.shopId = "" + (options.shopId || "");
 
         RappidApplication.prototype.constructor.call(this, url, options, "sketchomat", callback);
+    }
+
+    function Smartomat(options, callback) {
+        var url,
+            platform = options.platform === "NA" ? "NA" : "EU";
+
+        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/df/DF/Tablomat/Index/smartomat/mode/external";
+
+        if (options.url) {
+            url = options.url;
+        }
+
+        options.shopId = "" + (options.shopId || "");
+
+        RappidApplication.prototype.constructor.call(this, url, options, "smartomat", callback);
     }
 
     function Productomat(options, callback) {
