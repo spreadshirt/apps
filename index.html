@@ -31,7 +31,7 @@ title: Spreadshirt apps
     <div class="row space-after">
         <hr>
         <div class="large-12 columns centered-text">
-            <h2>Tablomat</h2>
+            <h2>Sketchomat</h2>
             <h4 class="subheader">
                 Full features, responsive T-Shirt designer.
             </h4>
@@ -39,13 +39,13 @@ title: Spreadshirt apps
     </div>
 
     <div class="row space-after">
-        <div class="large-12 columns" id="tablomatContainer">
+        <div class="large-12 columns" id="sketchomatContainer">
             <script type="text/javascript">
                 window.spreadshirtLoaded = window.spreadshirtLoaded || [];
                 window.spreadshirtLoaded.push(function(spreadshirt) {
                     // invoked when the spreadshirt library is loaded
-                    spreadshirt.create("tablomat", {
-                        target: document.getElementById("tablomatContainer"),
+                    spreadshirt.create("sketchomat", {
+                        target: document.getElementById("sketchomatContainer"),
                         shopId: 205909,
                         platform: "EU"
                     }, function(err, app) {
@@ -97,8 +97,41 @@ title: Spreadshirt apps
     </div>
 
     <div class="space-before space-after centered-text">
+        <a class="button" href="sketchomat">Learn how to embed the Sketchomat</a>
+    </div>
+
+    <div class="row space-after">
+        <hr>
+        <div class="large-12 columns centered-text">
+            <h2>Tablomat</h2>
+            <h4 class="subheader">
+                Deprecated HTML T-Shirt designer.
+            </h4>
+        </div>
+    </div>
+
+    <div class="row space-after">
+        <div class="large-12 columns" id="tablomatContainer">
+            <script type="text/javascript">
+                window.spreadshirtLoaded = window.spreadshirtLoaded || [];
+                window.spreadshirtLoaded.push(function(spreadshirt) {
+                    // invoked when the spreadshirt library is loaded
+                    spreadshirt.create("tablomat", {
+                        target: document.getElementById("tablomatContainer"),
+                        shopId: 205909,
+                        platform: "EU"
+                    }, function(err, app) {
+                        window.tablomatApp = app;
+                    });
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="space-before space-after centered-text">
         <a class="button" href="tablomat">Learn how to embed the Tablomat</a>
     </div>
+
 
 </section>
 

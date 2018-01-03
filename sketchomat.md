@@ -1,12 +1,12 @@
 ---
-layout: tablomat
-title: Tablomat
+layout: content
+title: Sketchomat
 ---
 
-Embed the Tablomat
+Embed the Sketchomat
 ===
 
-Embed the Tablomat with the following code snipped. The best position for this script block is just before the end body, but it's also fine to put in into the head section or load it lazy with a dynamic script loaded when needed. The render position is controlled by the `target` parameter (see below). 
+Embed the Sketchomat with the following code snipped. The best position for this script block is just before the end body, but it's also fine to put in into the head section or load it lazy with a dynamic script loaded when needed. The render position is controlled by the `target` parameter (see below). 
 
 
 In the callback you get an application instance to control the application from your script context or an 
@@ -15,7 +15,7 @@ error instance if any error occurred.
 ```html
 <script type="text/javascript" src="//spreadshirt.github.io/apps/spreadshirt.min.js"></script>
 <script type="text/javascript">
-    spreadshirt.create("tablomat", {
+    spreadshirt.create("sketchomat", {
         shopId: 123456, // your shop id
         platform: "EU"  // or NA
         // ... additional parameter (see below)
@@ -145,7 +145,7 @@ var possibleParameter = {
 Custom basket implementation
 ---
 
-If you want to use the Tablomat in your own shop system just as creation tool for custom
+If you want to use the Sketchomat in your own shop system just as creation tool for custom
 T-Shirts, but want to use your custom checkout you can pass an `addToBasket` function as
 parameter.
 
@@ -231,7 +231,7 @@ var parameter = {
 Controlling the application
 ===
 
-Beside the deeplinking feature, the Tablomat can be controlled during runtime by the
+Beside the deeplinking feature, the Sketchomat can be controlled during runtime by the
 following methods. Each method has its own signature and is executed
 *(due the limitations of the cross-domain boundary)* asynchronously. The return value
 of the method can be get in a callback method, passed as the last parameter.
@@ -324,7 +324,7 @@ getProductModel: function(productModel) {
 ```js
 
 openPanel: function(panel) {
-    // opens a specific panel in the tablomat
+    // opens a specific panel in the sketchomat
     var possibleValues = ["productTypes", "designs", "upload", "imageNetwork"]
 }
 
