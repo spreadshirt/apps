@@ -49,7 +49,7 @@ title: Spreadshirt apps
                         shopId: 205909,
                         platform: "EU"
                     }, function(err, app) {
-                        window.tablomatApp = app;
+                        window.sketchomatApp = app;
                     });
                 });
             </script>
@@ -98,6 +98,85 @@ title: Spreadshirt apps
 
     <div class="space-before space-after centered-text">
         <a class="button" href="sketchomat">Learn how to embed the Sketchomat</a>
+    </div>
+
+    <div class="row space-after">
+        <hr>
+        <div class="large-12 columns centered-text">
+            <h2>Smartomat</h2>
+            <h4 class="subheader">
+                Touch friendly, mobile T-Shirt designer.
+            </h4>
+        </div>
+    </div>
+
+    <div class="row space-after">
+        <div class="large-12 columns" id="smartomatContainer" style="text-align: center">
+            <style>
+                iframe#smartomat {
+                    border: 1px solid gray !important;
+                }
+            </style>
+            <script type="text/javascript">
+                window.spreadshirtLoaded = window.spreadshirtLoaded || [];
+                window.spreadshirtLoaded.push(function(spreadshirt) {
+                    // invoked when the spreadshirt library is loaded
+                    spreadshirt.create("smartomat", {
+                        target: document.getElementById("smartomatContainer"),
+                        shopId: 205909,
+                        platform: "EU",
+                        width: "320px",
+                        height: "480px"
+                    }, function(err, app) {
+                        window.smartomatApp = app;
+                    });
+                });
+            </script>
+        </div>
+    </div>
+
+    <div class="row centered-text">
+        <div class="medium-6 large-3 columns">
+            <div class="icon icon-rulers"></div>
+
+            <h3>Responsive</h3>
+
+            <p>
+                Fits to different screen sizes.
+            </p>
+        </div>
+        <div class="medium-6 large-3 columns">
+            <div class="icon-point-up icon"></div>
+
+            <h3>Touch friendly</h3>
+
+            <p>
+                Designed from scratch for an easy access with your thumb.
+            </p>
+        </div>
+        <div class="medium-6 large-3 columns">
+            <div class="icon-puzzle icon"></div>
+
+            <h3>Feature rich</h3>
+
+            <p>
+                Supports all features of it's big brother Sketchomat.
+            </p>
+
+        </div>
+        <div class="medium-6 large-3 columns">
+            <div class="icon-equalizer icon"></div>
+
+            <h3>Scriptable</h3>
+
+            <p>
+                Extend & control the application with javascript.
+            </p>
+        </div>
+    </div>
+
+    <div class="space-before space-after centered-text">
+        <a class="button" href="smartomat">Learn how to embed the Smartomat</a>
     </div>
 
     <div class="row space-after">
