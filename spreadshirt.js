@@ -67,8 +67,7 @@
         var tld = options.platform === 'NA' ? 'com' : 'net';
         var url = 'https://designer.spreadshirt.' + tld + '/tracking/integrations'
             + '?type=' + encodeURIComponent(type)
-            + '&host=' + encodeURIComponent(window.location.host)
-            + '&options=' + encodeURIComponent(JSON.stringify(options));
+            + '&host=' + encodeURIComponent(window.location.host);
         xhr.open('GET', url, true);
         xhr.send(null);
     }
