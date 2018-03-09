@@ -68,7 +68,8 @@
         var url = 'https://designer.spreadshirt.' + tld + '/tracking/integrations'
             + '?type=' + encodeURIComponent(type)
             + '&host=' + encodeURIComponent(window.location.host)
-            + '&options=' + encodeURIComponent(JSON.stringify(options));
+            + '&options=empty';
+//             + '&options=' + encodeURIComponent(JSON.stringify(options));
         xhr.open('GET', url, true);
         xhr.send(null);
     }
