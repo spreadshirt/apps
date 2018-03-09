@@ -62,6 +62,17 @@
         };
     }
 
+    function track(type, options) {
+        var xhr = new XMLHttpRequest();
+        var tld = options.platform === 'NA' ? 'com' : 'net';
+        var url = 'https://designer.spreadshirt.' + tld + '/tracking/integrations'
+            + '?type=' + encodeURIComponent(type)
+            + '&host=' + encodeURIComponent(window.location.host)
+            + '&options=' + encodeURIComponent(JSON.stringify(options));
+        xhr.open('GET', url, true);
+        xhr.send(null);
+    }
+
     /***
      * creates a new instance of the requested application
      *
@@ -80,6 +91,7 @@
         if (!app) {
             return callback(new Error("Application from type '" + type + "' not found"));
         }
+        track(type, options);
 
         // bootstrap the application
         new app(options, callback);
