@@ -65,9 +65,16 @@
     function track(type, options) {
         var xhr = new XMLHttpRequest();
         var tld = options.platform === 'NA' ? 'com' : 'net';
+        var optionsString = '';
+        try {
+            optionsString = '&options=' + encodeURIComponent(JSON.stringify(options));
+        } catch (e) {
+            console.error(e);
+        }
         var url = 'https://designer.spreadshirt.' + tld + '/tracking/integrations'
             + '?type=' + encodeURIComponent(type)
-            + '&host=' + encodeURIComponent(window.location.host);
+            + '&host=' + encodeURIComponent(window.location.host)
+            + optionsString;
         xhr.open('GET', url, true);
         xhr.send(null);
     }
@@ -90,7 +97,6 @@
         if (!app) {
             return callback(new Error("Application from type '" + type + "' not found"));
         }
-        track(type, options);
 
         // bootstrap the application
         new app(options, callback);
@@ -353,6 +359,7 @@
         options.target.appendChild(iFrame);
 
         delete options.target;
+        track(name, options);
 
         function bootStrap() {
 
