@@ -267,8 +267,8 @@
             initialized = false,
             bootStrapCalled = false,
             channel,
-            shopId,
-            hasQuestionMark = false;
+            shopId;
+        var hasQuestionMark = url.indexOf('?') > -1;
 
 
         options = extend({
@@ -320,12 +320,22 @@
         url = url.replace(/^file/i, "http");
 
         if (shopId) {
-            url += "?shopId=" + shopId;
-            hasQuestionMark = true;
+            if (hasQuestionMark) {
+                url += '&shopId=' + shopId;    
+            } else {
+                url += '?shopId=' + shopId;
+                hasQuestionMark = true;
+            }
+            
         }
 
         if (options.version) {
-            url += (hasQuestionMark ? "&" : "?") + "version=" + options.version;
+            if (hasQuestionMark) {
+                url += '&version=' + options.version;    
+            } else {
+                url += '?version=' + options.version;
+                hasQuestionMark = true;
+            }
         }
 
         if (window.addEventListener) {
