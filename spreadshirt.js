@@ -8,8 +8,6 @@
     var spreadshirt = window.spreadshirt = window.spreadshirt || {},
         applications = {
             tablomat: Tablomat,
-            productomat: Productomat,
-            shop: Shop,
             sketchomat: Sketchomat,
             smartomat: Smartomat
         },
@@ -478,7 +476,7 @@
         var url,
             platform = options.platform === "NA" ? "NA" : "EU";
 
-        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/df/DF/Tablomat/Index/external";
+        url = "//designer.spreadshirt." + (platform === "EU" ? "net" : "com") + "/designers/tablomat?mode=external";
 
         if (options.url) {
             url = options.url;
@@ -493,7 +491,7 @@
         var url,
         platform = options.platform === "NA" ? "NA" : "EU";
 
-        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/df/DF/Tablomat/Index/sketchomat/mode/external";
+        url = "//designer.spreadshirt." + (platform === "EU" ? "net" : "com") + "/designers/sketchomat?mode=external";
 
         if (options.url) {
             url = options.url;
@@ -508,7 +506,7 @@
         var url,
             platform = options.platform === "NA" ? "NA" : "EU";
 
-        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/df/DF/Tablomat/Index/smartomat/mode/external";
+        url = "//designer.spreadshirt." + (platform === "EU" ? "net" : "com") + "/designers/smartomat?mode=external";
 
         if (options.url) {
             url = options.url;
@@ -517,62 +515,6 @@
         options.shopId = "" + (options.shopId || "");
 
         RappidApplication.prototype.constructor.call(this, url, options, "smartomat", callback);
-    }
-
-    function Productomat(options, callback) {
-        var url,
-            platform = options.platform === "NA" ? "NA" : "EU",
-            country = platform === "EU" ? "DE" : "US",
-            language = window.navigator.language || "en";
-
-        language = language.split("-")[0];
-
-        if (supportedLanguages[platform].indexOf(language) === -1) {
-            // fallback
-            language = "en";
-        }
-
-        if (platform === "NA" && language === "en") {
-            language = "us";
-        }
-
-        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Productomat/Index";
-
-        if (options.url) {
-            url = options.url;
-        }
-
-
-        RappidApplication.prototype.constructor.call(this, url, options, "productomat", callback);
-    }
-
-    function Shop(options, callback) {
-        var url,
-            platform = options.platform === "NA" ? "NA" : "EU",
-            country = platform === "EU" ? "DE" : "US",
-            language = window.navigator.language || "en";
-
-        language = language.split("-")[0];
-
-        if (supportedLanguages[platform].indexOf(language) === -1) {
-            // fallback
-            language = "en";
-        }
-
-        if (platform === "NA" && language === "en") {
-            language = "us";
-        }
-
-        url = "//www.spreadshirt." + (platform === "EU" ? "net" : "com") + "/" + language + "/" + country + "/Shop5/Index/external";
-
-        if (options.url) {
-            url = options.url;
-        }
-
-        options.country = options.country || country;
-        options.language = options.language || language;
-
-        RappidApplication.prototype.constructor.call(this, url, options, "shop", callback);
     }
 
     Tablomat.prototype = new Application();
