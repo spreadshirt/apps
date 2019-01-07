@@ -1,6 +1,0 @@
-name: Apps - Spreadshirt
-markdown: redcarpet
-highlighter: rouge
-
-
-exclude: [scss, Gruntfile.js, node_modules, package.json, README.md, "*.iml", "atlassian-ide-plugin.xml"]
