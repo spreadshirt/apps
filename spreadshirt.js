@@ -16,7 +16,7 @@
             EU: ["de", "dk", "pl", "fi", "en", "fr", "es", "nl", "it", "no", "se"]
         },
         possibleDeeplinks = [
-            "designUrl", "designId", "designColor1", "designColor2", "designColor3", "designColorRgb1", "designColorRgb2", "designColorRgb3", "articleId", "productId", "appearanceId", "sizeId", "quantity", "viewId", "productTypeId", "tx1", "tx2", "tx3", "textColorRgb", "textColor", "departmentId", "productTypeCategoryId", "designCategoryId", "designSearch", "perspective", "mode", "panel", "basketId", "basketItemId", "editBasketItemUrl", "shareUrlTemplate", "hideVolumeDiscount", "whiteLabeled"
+            "designUrl", "designId", "designColor1", "designColor2", "designColor3", "designColorRgb1", "designColorRgb2", "designColorRgb3", "articleId", "productId", "appearanceId", "sizeId", "quantity", "viewId", "productTypeId", "tx1", "tx2", "tx3", "textColorRgb", "textColor", "departmentId", "productTypeCategoryId", "designCategoryId", "designSearch", "perspective", "mode", "panel", "basketId", "basketItemId", "editBasketItemUrl", "shareUrlTemplate", "hideVolumeDiscount", "whiteLabeled", "sellableId"
         ],
         stringifyMessage = isIE();
 
