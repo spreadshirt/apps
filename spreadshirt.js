@@ -7,7 +7,6 @@
 
     var spreadshirt = window.spreadshirt = window.spreadshirt || {},
         applications = {
-            tablomat: Tablomat,
             sketchomat: Sketchomat,
             smartomat: Smartomat
         },
@@ -244,9 +243,6 @@
 
     }
 
-    function Application(options) {
-    }
-
     function RappidApplication(url, options, name, cb) {
 
         var callbackCalled = false,
@@ -319,17 +315,17 @@
 
         if (shopId) {
             if (hasQuestionMark) {
-                url += '&shopId=' + shopId;    
+                url += '&shopId=' + shopId;
             } else {
                 url += '?shopId=' + shopId;
                 hasQuestionMark = true;
             }
-            
+
         }
 
         if (options.version) {
             if (hasQuestionMark) {
-                url += '&version=' + options.version;    
+                url += '&version=' + options.version;
             } else {
                 url += '?version=' + options.version;
                 hasQuestionMark = true;
@@ -472,21 +468,6 @@
         }
     }
 
-    function Tablomat(options, callback) {
-        var url,
-            platform = options.platform === "NA" ? "NA" : "EU";
-
-        url = "//designer.spreadshirt." + (platform === "EU" ? "net" : "com") + "/designers/tablomat?mode=external";
-
-        if (options.url) {
-            url = options.url;
-        }
-
-        options.shopId = "" + (options.shopId || "");
-
-        RappidApplication.prototype.constructor.call(this, url, options, "tablomat", callback);
-    }
-
     function Sketchomat(options, callback) {
         var url,
         platform = options.platform === "NA" ? "NA" : "EU";
@@ -516,9 +497,6 @@
 
         RappidApplication.prototype.constructor.call(this, url, options, "smartomat", callback);
     }
-
-    Tablomat.prototype = new Application();
-    Tablomat.prototype.constructor = Tablomat;
 
     var spreadshirtLoaded = window.spreadshirtLoaded;
     if (spreadshirtLoaded && spreadshirtLoaded instanceof Function) {
